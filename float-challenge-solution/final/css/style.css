@@ -1,0 +1,169 @@
+/* ================================= 
+  Base Styles
+==================================== */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Varela Round', sans-serif;
+	line-height: 1.6;
+	color: #3a3a3a;
+}
+
+p {
+	font-size: .95em;
+	margin-bottom: 1.5em;
+}
+
+h2,
+h3,
+a {
+	color: #093a58;
+}
+
+h2,
+h3 {
+	margin-top: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+/* ================================= 
+  Base Layout Styles
+==================================== */
+
+/* ---- Navigation ---- */
+
+.name {
+	font-size: 1.25em;
+/* 	notice how there's no display:block property. It doesn't need one; it's a heading, which has display: block by default */
+}
+
+.name,
+.main-nav li {
+/* 	this text-align rule doesn't apply, since both selectors have an anchor tag inside them, which have text-align properties of their own */
+/* 	text-align: center; */
+/* nice background color */
+	background: #fff;
+	margin-top: 6px;
+/* 	notice the margin-collapse that happens on mobile between the margin-bottom of one li, and the margin-top of the one below it */
+	margin-bottom: 6px;
+}
+
+.name a,
+.main-nav a {
+/* 	notice how padding is here on the anchor tags, and NOT on the list items or h1 */
+	padding: 10px 15px;
+/* 	text-align rule here is important, and it only applies to block elements */
+	text-align: center;
+/* 	this makes text-align work, also lets top and bottom padding be applied */
+	display: block;
+}
+
+	.main-nav a {
+		font-size: .95em;
+		color: #3acec2;
+		text-transform: uppercase;
+	}
+	
+	.main-nav a:hover {
+		color: #093a58;
+	}
+
+/* ---- Layout Containers ---- */
+
+.container {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.main-header {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+	background: #3acec2;
+	margin-bottom: 30px;
+}
+
+.main-footer {
+/* 	footer is already a block-level element, so text-align applies here. Were it applied to the span element inside, it wouldn't. */
+	text-align: center;
+	padding: 2em 0;
+	background: #d9e4ea;
+}
+
+/* ================================= 
+  Media Queries
+==================================== */
+
+@media (min-width: 789px) {
+
+	.wrap {
+/* 		this wrap starts just inside the body but ends just before the footer. 100vh is 100% of the vertical viewport of the browser, minus the hard pixel height of the footer.  */
+		min-height: calc(100vh - 89px);
+	}
+
+	.container {
+		width: 85%;
+		max-width: 1150px;
+/* 		no need to float this - just center it with margin 0 auto */
+		margin: 0 auto;
+	}
+
+	.main-nav {
+		float: right;
+	}
+
+	.name,
+	.main-nav li {
+/* 		this floats the logo on the left, but also the list items inside the right-floated main-nav */
+		float: left;
+	}
+
+	.main-nav li {
+/* 		seperate the list items from each other a little bit */
+		margin-left: 12px;
+	}
+
+	/* ---- Columns ---- */
+
+	.col {
+/* 		just a design choice for this exercise - could've easily done float left instead. */
+		float: right;
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+
+	.primary {
+		width: 60%;
+	}
+	
+	.secondary {
+		width: 40%;
+	}
+	
+	/* ------------- */
+
+	.feat-img {
+/* 		width now needs to be restricted in wider browsers */
+		width: 300px;
+		float: left;
+/* 		space around */
+		margin-top: 5px;
+		margin-right: 25px;
+		margin-bottom: 25px;
+		padding: 10px;
+		border: solid 1px #d9e4ea;
+	}
+
+	.clearfix::after {
+/* 		without this, all containers (since those are direct parents of the floated elements) would have their height collapsed.  */
+		content: "";
+		display: table;
+		clear: both;
+	}
+
+}
